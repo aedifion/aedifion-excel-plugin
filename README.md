@@ -1,30 +1,82 @@
+﻿# aedifion Excel Add-in
 
-# aedifion Excel plug-in
+The aedifion Excel Add-in allows you to one-click-import timeseries data stored at the aedifion data platform directly into your Microsoft Excel.
 
-Welcome to the aedifion Excel plug-in!
+## Use case
+Excel is a wide spread tool among engineers. Either to create plots, examine timeseries data, or to execute scripts e.g. to determine KPIs. Thus the aedifion Excel Add-in integrates to existing processes and scripts, allowing for performance enhancements and new services in Excel.
 
-The aedifion Excel plug-in allows you to one-click-import time series data stored at the aedifion data platform directly into your Microsoft Excel.
+## Prerequisites
 
-**Prerequisites:** 
+* **Windows** operating system running a newer version of **Microsoft Excel**.
 
-A windows computer running a newer version of Microsoft Excel. Installations of Excel on e.g. Apple computers currently do not support the installation of Excel plug ins.
-Further the installation of the aedifion Excel plugin does not require admin rights on your computer. Please inform your IT-admin about the installation, anyway.
+* **Apple** and its **iOS** operating system **do not enable installation of Excel Add-ins**. Thus the aedifion Excel Add-in cannot be installed on Apple devices.
 
-**Installation:** 
+## Installation
 
-Execute the file setup.exe. The plug-in will be directly installed to your Excel plug-ins. When the installation is done, open an empty workbook in your Excel. You can find the aedifion Excel plug-in as a tab next to "file", "home", "view" etc. as "aedifion". Click on the aedifion tab and go to "Settings" ("Einstellungen" in German). Please tick the check-box “Developer Options” ("Entwickleroptionen" in German) and insert the aedifion API URL: https://api.aedifion.io
+* **Download all files as .zip folder** via *Clone or download* -> *Download ZIP*. If possible, use program *7-Zip* to unzip the files. **Do not git clone** the repository, this will result in installation errors.
+* **Admin rights** on your computer are **not required**. Please inform your IT-admin about the installation anyway.
+* Execute the file **setup.exe**.
+* Publisher check appears. Confirm with a click on Install. The Add-in will be installed to your Excel.
+	![](/images/allow_installation.PNG)
+	* In case of an error check our **FAQs**.
 
-**How to use:** 
+## How to use
+* Open an empty workbook in your Excel.
+* Click the ***aedifion*** **tab** next to *file*, *home*, *view* etc. 
+	* **Change language** (default *German*): *Settings (Einstellungen)* -> *Language (Sprache)*
+	* **Change API server** (default https://api.aedifion.io): *Settings (Einstellungen)* -> click the check-box *Developer Options* -> insert the *API server address* of your project. You received the API server address as part of the *technical clearing and accounts* email.
+	* **Login**: Click *Login (Anmelden)* -> insert your user credentials
+	* **Data services**: The click-able icons.
+		* **Read Data (Daten lesen)**: This option allows to import timeseries data into Excel. You can choose from multiple datapoints of different buildings (aka. projects), several interpolation methods, diagram only, and flexible time settings. Press *Start* as soon as you want to query your configuration.
+		* **Diagram (Diagramm)**: This option is enabled as soon as timeseries data is imported. It plots the selected timeseries data to a diagram.
+		* **Add Curve (Kurve hinzufügen)**: This option allows to add a further timeseries to an existing plot. It also allows to plot timeseries of different buildings (aka. projects) into the same plot.
+		* **Data Points (Datenpunkte)**: This option allows to import a list of all datapoints of a project into Excel. 
 
-You can find the aedifion Excel plug-in as an extra tab on the layer where you can find file, how, view etc.. Choose the aedifion tab and you are right inside the aedifion plug-in. 
-The preselected language is German. In case you want to switch to English go to "Einstellungen" and select English.
-Login in with your aedifion user credentials at "Login" ("Anmeldung" in German) and you are set to go. In order to request time series choose the "Read Data" ("Daten lesen" in German) option. Choose your "Building" ("Gebäude" in German) first so that the list of data points from this building will be loaded. Pick one or more data points you want to get data from and configure the other options according to your wishes. Press start to load the data with the configured options. As soon as the data is loaded into Excel the option "Diagram" is available to plot the received data right away.
-So far as a brief introduction in the aedifion Excel plug-in. Feel free to play around and experience the tool as much as you like.
+# FAQs
+This section collects general Frequently Asked Questions. If your question is not answered here, please contact support@aedifion.com .
 
-**Trouble shooting:**
+## Installation
 
-401 error on login - Please check your login credentials. Another source of error could be the server URL queried. Please go to "Settings" and check "Developer Options". The server URL will open up. Please check, if the URL is correct.
+### Certificate issue
 
-time-out error - Please check your network settings and report this error to support@aedifion.com
+![](/images/certificate_issue.PNG)
 
-Remote name not found - Please go to "Settings" and check "Developer Options". The server URL will open up. Please check, if the URL is correct.
+Depending on the security settings of your computer, the installation of Excel Add-ins from internet sources is blocked.
+
+* *Option 1*: Right click on the file *setup.exe*. Click the check-box *Unblock* (see screen-shot below). 
+
+	![](/images/certificate_issue_solved.PNG)
+
+	In case this option is not available on your computer, use *option 2*.
+
+* *Option 2*: Adjust windows registry for [*ClickOnce trust promt*](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior?view=vs-2017).
+		We advice you to use tools like [Trust Promt](https://www.smartlux.com/software/trust-prompt-tool/) to do so. If you do not want to use Trust Prompt, try *option 3*.
+	* Download and execute (admin rights required) Trust Prompt.
+
+	![](/images/Trust_Promt.PNG)
+	* Click *Read from registry* and remember the settings. Create a new entry, if there is none available.
+	* During installation of the aedifion Excel Add-in set *Internet* to *Enable* and click *Write to registry*.
+	* After installation reset the settings to their initial state and click *Write to registry*.
+* *Option 3*: Adjust windows registry for [*ClickOnce*](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior?view=vs-2017) manually.
+	* Click on *Windows start* and execute *regedit.exe*.
+	* 64-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\MICROSOFT\.NETFramework\Security\TrustManager\PromptingLevel*
+	* 32-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\.NETFramework\Security\TrustManager\PromptingLevel*
+	* Create *string*: *Internet*
+	* Double click on the string and set its value to *Enable*.
+	* Verify with *OK* and rerun installation. (In case the 64-bit fix does not work, try the 32-bit option.)
+
+### Hash issue
+
+![](/images/hash_issue.png)
+
+This error occurs e.g. if the add-in is downloaded via git clone. Please download the add-in installation files as a .zip folder and retry the installation.
+
+## Authentication
+### 401 error on login
+Please check your login credentials e.g. by logging in to the aedifion front-end with your credentials. If your credentials work on the front-end, check the API server address via *Settings* -> *Developer Options*. The server URL will open up. Please check, if the URL is the one you received in the _technical clearing and accounts_ email.
+
+### Remote name not found
+Check the API server address via *Settings* -> *Developer Options*. The server URL will open up. Please check, if the URL is the one you received in the _technical clearing and accounts_ email.
+
+### Time-out error
+Please check your network settings and make sure your computer has sufficient internet connection. If the error occurs during good internet connectivity, please contact support@aedifion.com .
