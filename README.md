@@ -55,14 +55,14 @@ Depending on the security settings of your computer, the installation of Excel A
 
 	![](/images/Trust_Promt.PNG)
 	* Click *Read from registry* and remember the settings. Create a new entry, if there is none available.
-	* During installation of the aedifion Excel Add-in set *Internet* to *Enable* and click *Write to registry*.
+	* During installation of the aedifion Excel Add-in set *Internet* to *Enabled* and click *Write to registry*.
 	* After installation reset the settings to their initial state and click *Write to registry*.
 * *Option 3*: Adjust windows registry for [*ClickOnce*](https://docs.microsoft.com/en-us/visualstudio/deployment/how-to-configure-the-clickonce-trust-prompt-behavior?view=vs-2017) manually.
 	* Click on *Windows start* and execute *regedit.exe*.
-	* 64-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\MICROSOFT\.NETFramework\Security\TrustManager\PromptingLevel*
-	* 32-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\.NETFramework\Security\TrustManager\PromptingLevel*
+	* 64-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\MICROSOFT\\.NETFramework\Security\TrustManager\PromptingLevel*
+	* 32-bit systems navigate to *\HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\\.NETFramework\Security\TrustManager\PromptingLevel*
 	* Create *string*: *Internet*
-	* Double click on the string and set its value to *Enable*.
+	* Double click on the string and set its value to *Enabled*.
 	* Verify with *OK* and rerun installation. (In case the 64-bit fix does not work, try the 32-bit option.)
 
 ### Hash issue
@@ -71,7 +71,7 @@ Depending on the security settings of your computer, the installation of Excel A
 
 This error occurs e.g. if the add-in is downloaded via git clone. Please download the add-in installation files as a .zip folder and retry the installation.
 
-## Authentication
+## Data transfer
 ### 401 error on login
 Please check your login credentials e.g. by logging in to the aedifion front-end with your credentials. If your credentials work on the front-end, check the API server address via *Settings* -> *Developer Options*. The server URL will open up. Please check, if the URL is the one you received in the _technical clearing and accounts_ email.
 
