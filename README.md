@@ -7,9 +7,12 @@ Excel is a wide spread tool among engineers. Either to create plots, examine tim
 
 ## Prerequisites
 
-* **Windows** operating system running a newer version of **Microsoft Excel**.
+* **Windows**:
+   * Running a newer version of **Microsoft Excel**.
+   * The [**display language**](https://support.microsoft.com/en-us/windows/manage-display-language-settings-in-windows-10-219f28b0-9881-cd4c-75ca-dba919c52321) needs to be set to **German**.
 
-* **Apple** and its **iOS** operating system **do not enable installation of Excel Add-ins**. Thus the aedifion Excel Add-in cannot be installed on Apple devices.
+* **Apple**:
+   * **Does not enable installation of Excel Add-ins**. Thus the aedifion Excel Add-in cannot be installed on Apple devices.
 
 ## Installation
 
